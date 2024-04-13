@@ -43,7 +43,7 @@ const Quiz = ({text}) => {
     async function fetchQuiz() {
         try {
             setQuizLoading(true);
-            const response = await fetch(`https://impartease.up.railway.app/generate/quiz`, {
+            const response = await fetch(`https://impartease.up.railway.app/generate/quiz/`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

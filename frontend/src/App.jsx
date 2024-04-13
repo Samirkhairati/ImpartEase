@@ -23,7 +23,7 @@ function App() {
       const formData = new FormData();
       formData.append('pdf_file', file);
 
-      const response = await fetch(`https://impartease.up.railway.app/generate/summary/pdf`, {
+      const response = await fetch(`https://impartease.up.railway.app/generate/summary/pdf/`, {
         method: 'POST',
         body: formData
       });
@@ -50,7 +50,7 @@ function App() {
         throw new Error('Invalid YouTube link');
       }
       setLoading(true);
-      const response = await fetch(`https://impartease.up.railway.app/generate/summary/youtube`, {
+      const response = await fetch(`https://impartease.up.railway.app/generate/summary/youtube/`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
