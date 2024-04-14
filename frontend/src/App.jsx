@@ -5,10 +5,12 @@ import { FaLink } from "react-icons/fa6";
 import { useState } from 'react'
 import Markdown from 'react-markdown';
 import { MdFactCheck } from "react-icons/md";
+import { FaYoutube } from "react-icons/fa";
 
 function App() {
 
   const [youtube, setYoutube] = useState('');
+  const [impartus, setImpartus] = useState('');
   const [text, setText] = useState('');
   const [loading, setLoading] = useState(false);
   const [file, setFile] = useState(null);
@@ -37,6 +39,31 @@ function App() {
       console.log('PDF uploaded successfully:', result);
     } catch (error) {
       console.error('Error uploading PDF:', error.message);
+    } finally {
+      setLoading(false);
+    }
+  }
+  async function fetchImpartus() {
+    try {
+      setLoading(true);
+      const response = await fetch(`https://impartease.up.railway.app/generate/summary/impartus/`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          "link": impartus
+        })
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+      const text2 = await response.json();
+      setText(text2.summary || text2.error);
+      console.log(text);
+    } catch (error) {
+      alert(error.message);
     } finally {
       setLoading(false);
     }
@@ -83,10 +110,15 @@ function App() {
           </label>
           <h1 className='text-center w-full text-xl font-bold text-secondary'>- OR -</h1>
           <label className="py-7 input input-bordered flex items-center gap-2 w-full">
-            <FaLink />
+            <FaYoutube />
             <input value={youtube} onChange={(e) => { setYoutube(e.target.value) }} className="grow" placeholder="Enter YouTube video link" />
           </label>
-          <button onClick={() => { youtube != '' ? fetchText() : uploadPDF() }} className="w-full btn primary btn-lg">
+          <h1 className='text-center w-full text-xl font-bold text-secondary'>- OR -</h1>
+          <label className="py-7 input input-bordered flex items-center gap-2 w-full">
+            <FaLink />
+            <input value={impartus} onChange={(e) => { setImpartus(e.target.value) }} className="grow" placeholder="Enter Impartus video link" />
+          </label>
+          <button onClick={() => { impartus != '' ? fetchImpartus() : youtube != '' ? fetchText() : uploadPDF() }} className="w-full btn primary btn-lg">
             Upload
           </button>
 
