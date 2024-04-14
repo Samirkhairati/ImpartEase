@@ -20,7 +20,7 @@ npm install
 npm run dev
 ```
 
-#### Frontend
+#### Backend
 
 ```bash
 cd backend
