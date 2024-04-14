@@ -105,6 +105,12 @@ function App() {
       <div className='w-full h-screen flex flex-row text-white'>
         <div className='w-1/2 h-full px-10 py-10 flex flex-col gap-y-7 items-center'>
           <h1 className='text-5xl font-extrabold text-secondary mb-5 flex gap-x-4'><span><MdFactCheck /></span>ImpartEase</h1>
+
+          <label className="py-7 input input-bordered flex items-center gap-2 w-full">
+            <FaLink />
+            <input value={impartus} onChange={(e) => { setImpartus(e.target.value) }} className="grow" placeholder="Enter Impartus video link" />
+          </label>
+          <h1 className='text-center w-full text-xl font-bold text-secondary'>- OR -</h1>
           <label className="py-8 input input-bordered flex items-center gap-2 w-full">
             <input onChange={handleFileChange} accept='.pdf' type="file" className="w-full file-input file-input-bordered file-input-lg" />
           </label>
@@ -112,11 +118,6 @@ function App() {
           <label className="py-7 input input-bordered flex items-center gap-2 w-full">
             <FaYoutube />
             <input value={youtube} onChange={(e) => { setYoutube(e.target.value) }} className="grow" placeholder="Enter YouTube video link" />
-          </label>
-          <h1 className='text-center w-full text-xl font-bold text-secondary'>- OR -</h1>
-          <label className="py-7 input input-bordered flex items-center gap-2 w-full">
-            <FaLink />
-            <input value={impartus} onChange={(e) => { setImpartus(e.target.value) }} className="grow" placeholder="Enter Impartus video link" />
           </label>
           <button onClick={() => { impartus != '' ? fetchImpartus() : youtube != '' ? fetchText() : uploadPDF() }} className="w-full btn primary btn-lg">
             Upload
