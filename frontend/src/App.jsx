@@ -111,8 +111,9 @@ function App() {
             <input value={impartus} onChange={(e) => { setImpartus(e.target.value) }} className="grow" placeholder="Enter Impartus video link" />
           </label>
           <h1 className='text-center w-full text-xl font-bold text-secondary'>- OR -</h1>
-            <input onChange={handleFileChange} accept='.pdf' type="file" className="file-input file-input-bordered file-input-lg w-full h-10" />
-
+          <label className="py-8 input input-bordered flex items-center gap-2 w-full">
+            <input onChange={handleFileChange} accept='.pdf' type="file" className="w-full file-input file-input-bordered file-input-lg" />
+          </label>
           <h1 className='text-center w-full text-xl font-bold text-secondary'>- OR -</h1>
           <label className="py-7 input input-bordered flex items-center gap-2 w-full">
             <FaYoutube />

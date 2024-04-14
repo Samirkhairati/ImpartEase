@@ -1,12 +1,14 @@
 import { useState, useEffect } from "react"
 
-const Quiz = ({text}) => {
+const Quiz = ({ text }) => {
     const [currentQuestion, setCurrentQuestion] = useState(0);
     const [selectedOption, setSelectedOption] = useState(null);
     const [isNextDisabled, setIsNextDisabled] = useState(true);
     const [quizLoading, setQuizLoading] = useState(false);
     const [score, setScore] = useState(0);
     const [showScore, setShowScore] = useState(false);
+    const [difficulty, setDifficulty] = useState('');
+    const [count, setCount] = useState('');
 
     const handleOptionClick = (selectedOption) => {
         const currentAnswer = questions[currentQuestion].answer;
@@ -49,7 +51,10 @@ const Quiz = ({text}) => {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({
-                    "text": text
+                    "text": text,
+                    "difficulty": difficulty,
+                    "count": count
+
                 })
             });
 
@@ -70,7 +75,32 @@ const Quiz = ({text}) => {
         <>
 
             <div className='flex gap-y-3 flex-col items-center w-full p-10 border-2 border-slate-700 rounded-xl'>
-                <button className="btn btn-lg mb-5" onClick={() => fetchQuiz()}>Generate Quiz</button>
+                <div className="flex gap-x-4 items-center">
+                    <button className="btn btn-lg" onClick={() => fetchQuiz()}>Generate Quiz</button>
+
+                    <select value={difficulty} onChange={(e) => setDifficulty(e.target.value)} className="select w-full max-w-xs">
+                        <option disabled selected>Difficulty</option>
+                        <option>Easy</option>
+                        <option>Medium</option>
+                        <option>Hard</option>
+                        <option>Extreme</option>
+                    </select>
+                    <select value={count} onChange={(e) => setCount(e.target.value)} className="select w-full max-w-xs">
+                        <option disabled selected>Count</option>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                        <option>6</option>
+                        <option>7</option>
+                        <option>8</option>
+                        <option>9</option>
+                        <option>10</option>
+                    </select>
+                </div>
+                
+
                 {
                     quizLoading ? <span className="loading loading-spinner loading-lg"></span>
                         :
