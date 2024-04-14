@@ -1,4 +1,4 @@
-# ImpartEase
+# ImpartEase 📕
 
 ## Description
 
@@ -19,6 +19,15 @@ cd frontend
 npm install
 npm run dev
 ```
+
+#### Frontend
+
+```bash
+cd backend
+pip install -r requirements.txt
+uvicorn server:app
+```
+
 ##### Environment Variables (backend)
 
 ```
