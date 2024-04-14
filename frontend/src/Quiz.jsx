@@ -8,7 +8,7 @@ const Quiz = ({ text }) => {
     const [score, setScore] = useState(0);
     const [showScore, setShowScore] = useState(false);
     const [difficulty, setDifficulty] = useState('');
-    const [count, setCount] = useState('');
+    const [count, setCount] = useState('5');
 
     const handleOptionClick = (selectedOption) => {
         const currentAnswer = questions[currentQuestion].answer;
@@ -27,6 +27,8 @@ const Quiz = ({ text }) => {
         if (currentQuestion + 1 != questions.length) setCurrentQuestion(currentQuestion + 1);
         else {
             setShowScore(true);
+            setCurrentQuestion(0);
+            
         }
     };
 
@@ -45,6 +47,8 @@ const Quiz = ({ text }) => {
     async function fetchQuiz() {
         try {
             setQuizLoading(true);
+            setShowScore(false);
+            setScore(0); 
             const response = await fetch(`https://impartease.up.railway.app/generate/quiz/`, {
                 method: 'POST',
                 headers: {
@@ -53,7 +57,7 @@ const Quiz = ({ text }) => {
                 body: JSON.stringify({
                     "text": text,
                     "difficulty": difficulty,
-                    "count": count
+                    "num_questions": count
 
                 })
             });
