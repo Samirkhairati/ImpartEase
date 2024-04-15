@@ -1,6 +1,6 @@
 # ImpartEase 📕
 
-![Screenshot](https://i.imgur.com/ok0c8FL.png)
+![Screenshot](https://i.imgur.com/1XxKcv9.png)
 
 ## Description
 
