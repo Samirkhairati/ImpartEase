@@ -1,5 +1,7 @@
 # ImpartEase 📕
 
+![Screenshot](https://i.imgur.com/ok0c8FL.png)
+
 ## Description
 
 Upload slides, or paste a youtube or impartus lecture link, and get AI genereated summarized notes, and test yourself with an auto-generated quiz
