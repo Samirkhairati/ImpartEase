@@ -1,4 +1,4 @@
-# ImpartEase 📕
+# 📘 ImpartEase
 
 ![Screenshot](https://i.imgur.com/1XxKcv9.png)
 
